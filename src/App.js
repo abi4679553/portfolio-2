@@ -1,3 +1,7 @@
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Experience from "./components/Expreience";
+import Footer from "./components/Footer";
 import Frontpage from "./components/Frontpage";
 import Header from "./components/Header"
 
@@ -8,6 +12,10 @@ function App() {
 
       <Header />
       <Frontpage />
+      <About />
+      <Experience />
+      <Contact />
+      <Footer />
   
     </div>
   );
