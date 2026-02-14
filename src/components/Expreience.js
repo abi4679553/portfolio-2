@@ -8,89 +8,90 @@ const Experience = () => {
       id="experience"
       className="min-h-screen w-full
       bg-gradient-to-br from-[#1a0033] via-[#2d004d] to-[#0b1d5e]
-      text-white px-6 sm:px-10 md:px-16 py-20"
+      text-white
+      px-4 sm:px-6 md:px-12 xl:px-20
+      py-16 sm:py-20 xl:py-28"
     >
-      <div className="max-w-5xl mx-auto space-y-16">
+      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
 
         {/* TITLE */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="space-y-4"
+          className="space-y-3 sm:space-y-4 text-center md:text-left"
         >
-          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-bold text-pink-400 tracking-wide">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl 
+                         font-bold text-pink-400 tracking-wide">
             Experience
           </h2>
 
-          <div className="w-20 h-[3px] bg-pink-500 animate-pulse rounded-full"></div>
+          <div className="w-14 sm:w-16 md:w-20 h-[3px] bg-pink-500 rounded-full mx-auto md:mx-0"></div>
 
-          <p className="text-gray-300 max-w-xl">
-            My professional journey and real-time frontend development experience.
+          <p className="text-gray-300 text-sm sm:text-base max-w-lg mx-auto md:mx-0">
+            Professional frontend development experience in real-time projects.
           </p>
         </motion.div>
 
-        {/* EXPERIENCE CARD */}
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
-          viewport={{ once: true }}
-          whileHover={{ scale: 1.03 }}
-          className="relative border-l-2 border-pink-500 pl-8 group"
-        >
+        {/* TIMELINE */}
+        <div className="relative">
 
-          {/* ICON */}
-          <div className="absolute -left-5 top-4 
-            bg-pink-500 p-3 rounded-full 
-            shadow-lg shadow-pink-500/50 
-            group-hover:shadow-pink-500/80 
-            transition duration-500">
-            <Briefcase size={18} />
-          </div>
+          {/* Vertical Line (hidden on small screens) */}
+          <div className="hidden sm:block absolute left-3 top-0 w-[2px] h-full bg-pink-500"></div>
 
-          {/* CARD CONTENT */}
-          <div className="bg-white/5 backdrop-blur-lg 
-            p-8 rounded-2xl 
-            border border-white/10 
-            shadow-xl 
-            group-hover:border-pink-400/40 
-            transition duration-500 space-y-4">
+          {/* CARD */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -5 }}
+            className="relative sm:pl-12"
+          >
 
-            <h3 className="text-2xl font-semibold text-pink-400">
-              Frontend Developer Intern
-            </h3>
+            {/* ICON */}
+            <div className="absolute hidden sm:flex left-0 top-4 
+              bg-pink-500 p-2 sm:p-3 rounded-full
+              shadow-lg shadow-pink-500/50">
+              <Briefcase size={16} className="sm:w-[18px] sm:h-[18px]" />
+            </div>
 
-            <p className="text-pink-300 font-medium text-lg">
-              SAN Technovation
-            </p>
+            {/* CONTENT CARD */}
+            <div className="bg-white/5 backdrop-blur-lg 
+              p-5 sm:p-6 md:p-8
+              rounded-xl sm:rounded-2xl
+              border border-white/10 
+              shadow-xl 
+              hover:border-pink-400/40
+              transition duration-500 space-y-3 sm:space-y-4">
 
-            <p className="text-sm text-gray-400">
-              Real-Time Project Experience | 2026
-            </p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-pink-400">
+                Frontend Developer Intern
+              </h3>
 
-            <ul className="list-disc list-inside text-gray-300 space-y-3 mt-4 leading-relaxed">
-              <li>
-                Developed responsive and modern UI using HTML, CSS, JavaScript.
-              </li>
-              <li>
-                Built reusable React components for real-time client projects.
-              </li>
-              <li>
-                Integrated REST APIs and handled frontend data rendering.
-              </li>
-              <li>
-                Optimized performance and ensured cross-device compatibility.
-              </li>
-              <li>
-                Collaborated with team members in debugging and UI enhancements.
-              </li>
-            </ul>
+              <p className="text-pink-300 font-medium text-base sm:text-lg">
+                SAN Technovation
+              </p>
 
-          </div>
-        </motion.div>
+              <p className="text-xs sm:text-sm text-gray-400">
+                Real-Time Project Experience | 2026
+              </p>
 
+              <ul className="list-disc list-inside text-gray-300 
+                             text-sm sm:text-base
+                             space-y-2 sm:space-y-3 mt-3 leading-relaxed">
+                <li>Developed responsive and modern UI using HTML, CSS, JavaScript.</li>
+                <li>Built reusable React components for real-time client projects.</li>
+                <li>Integrated REST APIs and handled frontend data rendering.</li>
+                <li>Optimized performance and ensured cross-device compatibility.</li>
+                <li>Collaborated in debugging and UI improvements.</li>
+              </ul>
+
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
