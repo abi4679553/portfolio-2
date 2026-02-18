@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
@@ -18,6 +17,38 @@ const item = {
 };
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleclick = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_vdgyeua",
+        "template_mpi4jv3",
+        formData,
+        "2QSeB0RVbOAQhT2LQ"
+      )
+      .then(() => {
+        alert("Email sent successfully ✅");
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.log("FAILED...", error.text);
+      });
+  };
+
   return (
     <section
       className="min-h-screen w-full
@@ -48,134 +79,125 @@ const Contact = () => {
           {/* LEFT INFO */}
           <motion.div variants={container} className="space-y-8">
 
-            {/* EMAIL */}
-            <motion.div variants={item}
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-4 transition duration-300"
-            >
+            <motion.div variants={item} whileHover={{ scale: 1.05 }} className="flex items-center gap-4">
               <div className="p-3 rounded-full bg-pink-500/10 border border-pink-400/30 backdrop-blur-md">
                 <Mail className="text-pink-400" />
               </div>
               <div>
                 <p className="text-sm text-gray-400">Email</p>
-                <a
-                  href="mailto:abivengadajalam7708@email.com"
-                  className="hover:text-pink-400 transition"
-                >
+                <span className="hover:text-pink-400 transition">
                   abivengadajalam7708@email.com
-                </a>
+                </span>
               </div>
             </motion.div>
 
-            {/* PHONE */}
-            <motion.div variants={item}
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-4 transition duration-300"
-            >
+            <motion.div variants={item} whileHover={{ scale: 1.05 }} className="flex items-center gap-4">
               <div className="p-3 rounded-full bg-pink-500/10 border border-pink-400/30 backdrop-blur-md">
                 <Phone className="text-pink-400" />
               </div>
               <div>
                 <p className="text-sm text-gray-400">Phone</p>
-                <a
-                  href="tel:+917708749115"
-                  className="hover:text-pink-400 transition"
-                >
+                <span className="hover:text-pink-400 transition">
                   +91 7708749115
-                </a>
+                </span>
               </div>
             </motion.div>
 
-            {/* LINKEDIN */}
-            <motion.div variants={item}
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-4 transition duration-300"
-            >
+            <motion.div variants={item} whileHover={{ scale: 1.05 }} className="flex items-center gap-4">
               <div className="p-3 rounded-full bg-pink-500/10 border border-pink-400/30 backdrop-blur-md">
                 <Linkedin className="text-pink-400" />
               </div>
               <div>
                 <p className="text-sm text-gray-400">LinkedIn</p>
-                <a
-                  href="https://www.linkedin.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-pink-400 transition"
-                >
+                <span className="hover:text-pink-400 transition">
                   linkedin.com
-                </a>
+                </span>
               </div>
             </motion.div>
 
-            {/* GITHUB */}
-            <motion.div variants={item}
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-4 transition duration-300"
-            >
+            <motion.div variants={item} whileHover={{ scale: 1.05 }} className="flex items-center gap-4">
               <div className="p-3 rounded-full bg-pink-500/10 border border-pink-400/30 backdrop-blur-md">
                 <Github className="text-pink-400" />
               </div>
               <div>
                 <p className="text-sm text-gray-400">GitHub</p>
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-pink-400 transition"
-                >
+                <span className="hover:text-pink-400 transition">
                   github.com
-                </a>
+                </span>
               </div>
             </motion.div>
 
           </motion.div>
 
           {/* RIGHT FORM */}
-          <motion.form
-            variants={item}
-            className="space-y-6 p-6 sm:p-8 rounded-2xl
-            bg-white/5 border border-white/10 backdrop-blur-lg
-            shadow-xl"
-          >
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full p-3 rounded-lg bg-transparent
-              border border-white/20 focus:outline-none
-              focus:border-pink-400 focus:ring-1 focus:ring-pink-400
-              transition"
-            />
+          <div className="space-y-6">
 
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="w-full p-3 rounded-lg bg-transparent
-              border border-white/20 focus:outline-none
-              focus:border-pink-400 focus:ring-1 focus:ring-pink-400
-              transition"
-            />
-
-            <textarea
-              rows="4"
-              placeholder="Your Message"
-              className="w-full p-3 rounded-lg bg-transparent
-              border border-white/20 focus:outline-none
-              focus:border-pink-400 focus:ring-1 focus:ring-pink-400
-              transition"
-            ></textarea>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              type="submit"
-              className="w-full py-3 rounded-full
-              bg-pink-500 hover:bg-pink-600
-              shadow-lg shadow-pink-500/40
-              transition font-medium"
+            <motion.form
+              variants={item}
+              className="space-y-6 p-6 sm:p-8 rounded-2xl
+              bg-white/5 border border-white/10 backdrop-blur-lg
+              shadow-xl"
             >
-              Send Message
-            </motion.button>
-          </motion.form>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name"
+                className="w-full p-3 rounded-lg bg-transparent
+                border border-white/20 focus:outline-none
+                focus:border-pink-400 focus:ring-1 focus:ring-pink-400
+                transition"
+              />
+
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email"
+                className="w-full p-3 rounded-lg bg-transparent
+                border border-white/20 focus:outline-none
+                focus:border-pink-400 focus:ring-1 focus:ring-pink-400
+                transition"
+              />
+
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="4"
+                placeholder="Your Message"
+                className="w-full p-3 rounded-lg bg-transparent
+                border border-white/20 focus:outline-none
+                focus:border-pink-400 focus:ring-1 focus:ring-pink-400
+                transition"
+              ></textarea>
+            </motion.form>
+
+            {/* RIGHT ALIGNED BUTTON - 130px SHIFT */}
+            <div className="flex justify-end">
+              <motion.button
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                type="submit"
+                onClick={handleclick}
+                className="
+                px-10 py-3 rounded-full
+                bg-gradient-to-r from-pink-500 to-purple-500
+                hover:from-pink-600 hover:to-purple-600
+                shadow-lg shadow-pink-500/40
+                hover:shadow-purple-500/50
+                transition-all duration-300
+                font-semibold tracking-wide
+                mr-[130px]
+                "
+              >
+                Send Message
+              </motion.button>
+            </div>
+
+          </div>
 
         </div>
       </motion.div>

@@ -1,5 +1,7 @@
 import React from "react";
 import profile from "../assests/Screenshot 2026-02-08 204801.png";
+import About from "./About";
+import Skills from "./Skills";
 
 const Frontpage = () => {
   return (
@@ -57,7 +59,10 @@ const Frontpage = () => {
         </div>
 
       </div>
+   
     </section>
+
+    
   );
 };
 
