@@ -11,24 +11,31 @@ const Header = () => {
     { name: "Education", path: "/education" },
     { name: "Skills", path: "/skills" },
     { name: "Project", path: "/project" },
+    { name: "Experience", path: "/experience" },
     { name: "Resume", path: "/resume" },
     { name: "Contact", path: "/contact" }
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg">
-      <div className="flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 xl:px-10 py-5">
+    <header className="relative sticky top-0 z-50 bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg">
 
-        {/* LOGO */}
-        <Link
-          to="/"
-          className="text-xl sm:text-2xl xl:text-3xl font-bold tracking-wide cursor-pointer hover:scale-105 transition"
-        >
-          👩‍💻 SHANKARESHWARI
-        </Link>
+      {/* 🔥 Logo 10px from left */}
+      <Link
+        to="/"
+        className="absolute left-0 ml-[100px] top-1/2 -translate-y-1/2
+                   text-xl sm:text-2xl xl:text-3xl font-bold tracking-wide 
+                   cursor-pointer hover:scale-105 transition p-5"
+      >
+        👩‍💻 SHANKARESHWARI 
+      </Link>
 
-        {/* DESKTOP MENU */}
-        <nav className="hidden md:flex gap-8 xl:gap-12 text-base xl:text-lg font-medium">
+      <div className="flex items-center justify-between w-full px-6 py-5">
+
+        {/* Space to prevent overlap */}
+        <div className="w-[200px]"></div>
+
+        {/* Menu justify-between */}
+        <nav className="hidden md:flex justify-between flex-1 max-w-4xl text-base xl:text-lg font-medium">
           {menuItems.map((item, index) => (
             <Link
               key={index}
@@ -43,16 +50,17 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* MOBILE MENU ICON */}
+        {/* Mobile Menu Icon */}
         <div
           className="md:hidden text-3xl cursor-pointer"
           onClick={() => setOpen(!open)}
         >
           {open ? <HiX /> : <HiMenu />}
         </div>
+
       </div>
 
-      {/* MOBILE MENU */}
+      {/* Mobile Menu */}
       {open && (
         <div className="md:hidden bg-gradient-to-r from-pink-600 to-purple-600 px-6 pb-6">
           <div className="flex flex-col gap-4 text-base font-medium text-center">
@@ -70,7 +78,6 @@ const Header = () => {
         </div>
       )}
     </header>
-    
   );
 };
 
