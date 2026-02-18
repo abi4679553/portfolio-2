@@ -9,6 +9,8 @@ import Project from "./components/Project";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Resume from "./components/Resume";
+import Skills from "./components/Skills";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/education" element={<Education />} />
         <Route path="/project" element={<Project />} />
         <Route path="/experience" element={<Experience />} />
+        <Route path="/skills" element={<Skills/>} />
+        <Route path="/resume" element={<Resume/>} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
 
