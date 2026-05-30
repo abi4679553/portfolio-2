@@ -55,8 +55,6 @@ const Contact = () => {
       bg-gradient-to-br from-[#1a0033] via-[#2d004d] to-[#0b1d5e]
       text-white px-6 md:px-16 py-24 overflow-hidden"
     >
-
-      {/* Background Glow */}
       <div className="absolute w-80 h-80 bg-pink-500/20 rounded-full blur-3xl top-10 left-10"></div>
       <div className="absolute w-80 h-80 bg-purple-500/20 rounded-full blur-3xl bottom-10 right-10"></div>
 
@@ -67,12 +65,15 @@ const Contact = () => {
         viewport={{ once: true }}
         className="relative z-10 max-w-6xl mx-auto space-y-16"
       >
-
-        {/* TITLE */}
-        <motion.div variants={item} className="space-y-4 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-bold 
-                         bg-gradient-to-r from-pink-400 to-purple-400
-                         bg-clip-text text-transparent">
+        <motion.div
+          variants={item}
+          className="space-y-4 text-center md:text-left"
+        >
+          <h2
+            className="text-4xl md:text-5xl font-bold 
+            bg-gradient-to-r from-pink-400 to-purple-400
+            bg-clip-text text-transparent"
+          >
             Contact Me
           </h2>
           <div className="w-20 h-[4px] bg-pink-500 rounded-full mx-auto md:mx-0"></div>
@@ -82,12 +83,8 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        {/* CONTENT */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-
-          {/* LEFT INFO */}
           <motion.div variants={container} className="space-y-8">
-
             {[
               { icon: <Mail />, label: "Email", value: "abivengadajalam7708@email.com" },
               { icon: <Phone />, label: "Phone", value: "+91 7708749115" },
@@ -114,10 +111,8 @@ const Contact = () => {
                 </div>
               </motion.div>
             ))}
-
           </motion.div>
 
-          {/* RIGHT FORM */}
           <motion.form
             variants={item}
             onSubmit={handleclick}
@@ -165,22 +160,23 @@ const Contact = () => {
               transition"
             ></textarea>
 
+            {/* 🔥 Button Size Reduced Here */}
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="w-full py-3 rounded-full
+              className="px-6 py-2 text-sm rounded-full
               bg-gradient-to-r from-pink-500 to-purple-500
               hover:from-pink-600 hover:to-purple-600
               shadow-lg shadow-pink-500/40
               hover:shadow-purple-500/50
               transition-all duration-300
-              font-semibold tracking-wide"
+              font-semibold tracking-wide
+              mx-auto block"
             >
               Send Message 🚀
             </motion.button>
           </motion.form>
-
         </div>
       </motion.div>
     </section>

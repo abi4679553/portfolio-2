@@ -1,7 +1,7 @@
 import React from "react";
 import { Mail, Phone, Github, Linkedin, Download } from "lucide-react";
 import { motion } from "framer-motion";
-import profile from "../assests/Screenshot 2026-02-08 204801.png";
+import profile from "../assests/coat1.jpeg";
 
 const container = {
   hidden: { opacity: 0 },

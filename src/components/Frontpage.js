@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import profile from "../assests/Screenshot 2026-02-08 204801.png";
+import profile from "../assests/coat1.jpeg";
 import About from "./About";
 import Education from "./Education";
 import Project from "./Project";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
-
+import profile from "../assests/coat1.jpeg";
 const Header = () => {
   const [open, setOpen] = useState(false);
 
